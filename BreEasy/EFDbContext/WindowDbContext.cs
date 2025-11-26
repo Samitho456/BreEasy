@@ -10,9 +10,9 @@ namespace BreEasy.EFDbContext
         {
         }
 
+        // Override OnConfiguring to provide a fallback connection string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Only configure here as a fallback when not configured by DI
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(@"Data Source=localhost,1433;User ID=SA;Password=YourStrong!Passw0rd;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");

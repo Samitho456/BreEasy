@@ -2,9 +2,13 @@
 {
     public class Window
     {
+        // Friendly name for the window to show on the vue page
         private string _windowName;
+
+        // Unique identifier for the window
         public int Id { get; set; }
 
+        // Friendly name for the window with validation on length
         public string WindowName
         {
             get { return _windowName; }
@@ -18,12 +22,16 @@
             }
         }
 
+        // Foreign key to Location table
         public int LocationId { get; set; }
 
+        // Timestamp of when the window was last opened or closed
         public DateTime TimeLastOpened { get; set; }
 
+        // Boolean indicating if the window is currently open or closed
         public bool IsOpen { get; set; }
 
+        // Constructor
         public Window(int id, string windowName, int locationId , DateTime timeLastOpened, bool isOpen)
         {
             Id = id;
@@ -32,6 +40,8 @@
             TimeLastOpened = timeLastOpened;
             IsOpen = isOpen;
         }
+
+        // Default constructor
         public Window() { }
     }
 }

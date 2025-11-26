@@ -23,10 +23,12 @@ builder.Services.AddCors(options =>
         });
 });
 
+// Configure Entity Framework and SQL Server
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<WindowDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+// Register the WindowsDbRepo for dependency injection
 builder.Services.AddScoped<WindowsDbRepo, WindowsDbRepo>();
 
 var app = builder.Build();
