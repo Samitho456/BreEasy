@@ -18,6 +18,7 @@
         /// <param name="obj">The <see cref="Window"/> object to add. The object's <c>Id</c> property will be set to a unique value.</param>
         public void Add(Window obj)
         {
+            // Assign a unique Id to the new Window and add it to the list
             obj.Id = _idCounter++;
             _windowDb.Add(obj);
         }
@@ -28,6 +29,7 @@
         /// <returns>An <see cref="IEnumerable{T}"/> containing all <see cref="Window"/> objects in the database.</returns>
         public IEnumerable<Window> GetAll()
         {
+            // Return a copy of the list to prevent external modification
             IEnumerable<Window> windows = new List<Window>(_windowDb);
             return windows;
         }
@@ -40,6 +42,7 @@
         /// exists.</returns>
         public Window GetById(int id)
         {
+            // Find and return the Window with the specified Id
             return _windowDb.FirstOrDefault(w => w.Id == id);
         }
 
@@ -53,6 +56,7 @@
         /// langword="null"/> if no matching window is found.</returns>
         public Window GetByLocation(int id)
         {
+            // Find and return the Window with the specified LocationId
             return _windowDb.FirstOrDefault(w => w.LocationId == id);
         }
         
@@ -65,11 +69,14 @@
         /// <returns>The <see cref="Window"/> object that was removed if it exists; otherwise, <see langword="null"/>.</returns>
         public Window Remove(int id)
         {
+            // Find the Window to remove
             Window windowToRemove = GetById(id);
+            // If found, remove it from the list
             if (windowToRemove != null)
             {
                 _windowDb.Remove(windowToRemove);
             }
+            // Return the removed Window (or null if not found)
             return windowToRemove;
         }
 
@@ -85,7 +92,9 @@
         /// otherwise, <see langword="null"/>.</returns>
         public Window Update(int id, Window obj)
         {
+            // Find the Window to update
             Window windowToUpdate = GetById(id);
+            // If found, update its properties
             if (windowToUpdate != null)
             {
                 windowToUpdate.WindowName = obj.WindowName;
@@ -93,6 +102,7 @@
                 windowToUpdate.TimeLastOpened = obj.TimeLastOpened;
                 windowToUpdate.IsOpen = obj.IsOpen;
             }
+            // Return the updated Window (or null if not found)
             return windowToUpdate;
         }
     }
