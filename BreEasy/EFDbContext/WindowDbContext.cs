@@ -1,26 +1,32 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace BreEasy.EFDbContext
 {
     public class WindowDbContext : DbContext
     {
-        // Add constructor that accepts options so AddDbContext can pass configured options
-        public WindowDbContext(DbContextOptions<WindowDbContext> options)
+        private readonly IConfiguration _configuration;
+
+        public WindowDbContext(DbContextOptions<WindowDbContext> options, IConfiguration configuration)
             : base(options)
         {
+            _configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Only configure here as a fallback when not configured by DI
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=localhost,1433;User ID=SA;Password=YourStrong!Passw0rd;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                // First try environment variable, fall back to appsettings.json
+                var connectionString =
+                    Environment.GetEnvironmentVariable("CONNECTION_STRING")
+                    ?? _configuration.GetConnectionString("DefaultConnection");
+
+                optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             }
-        }   
+        }
 
         public DbSet<Window> Windows { get; set; }
         public DbSet<Location> Locations { get; set; }
     }
 }
-
