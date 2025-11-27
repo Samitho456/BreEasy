@@ -88,10 +88,17 @@ namespace BreEasy.Tests
         [TestMethod()]
         public void RemoveTest()
         {
-
+            // Rreate a new window to remove
+            var newWindow = new Window { WindowName = "Office Window", LocationId = 104, TimeLastOpened = DateTime.Now, IsOpen = false };
+            // Add the new window to the repo
+            repo.Add(newWindow);
+            // Remove the window by its assigned ID
+            var removedWindow = repo.Remove(3);
+            // Verify that the removed window is empty
+            Assert.AreEqual(2, repo.GetAll().Count());
         }
 
-        [TestMethod()]
+            [TestMethod()]
         public void UpdateTest()
         {
 
