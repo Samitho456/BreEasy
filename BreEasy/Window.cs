@@ -14,6 +14,10 @@
             get { return _windowName; }
             set
             {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Window name cannot be null or empty.");
+                }
                 if (value.Length <= 2)
                 {
                     throw new ArgumentException("Window name must be 2 or more characters.");
