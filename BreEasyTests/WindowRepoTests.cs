@@ -66,6 +66,12 @@ namespace BreEasy.Tests
         [TestMethod()]
         public void GetByIdTest()
         {
+            // Retrieve a window by its ID
+            var window = repo.GetById(1);
+            // Verify that it doesn't return null.
+            Assert.IsNotNull(window);
+            // Check that the name properties match
+            Assert.AreEqual("Living Room Window", window.WindowName);
 
         }
 
