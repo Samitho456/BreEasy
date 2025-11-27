@@ -101,7 +101,22 @@ namespace BreEasy.Tests
             [TestMethod()]
         public void UpdateTest()
         {
+            // Creates a new window with updated properties
+            var updatedWindow = new Window { WindowName = "Updated Living Room Window", LocationId = 101, TimeLastOpened = DateTime.Now, IsOpen = true };
+            // Update the existing window in the repo
+            repo.Update(1, updatedWindow);
 
+            // Retrieve the updated window by its ID
+            var retrievedWindow = repo.GetById(1);
+            Assert.IsNotNull(retrievedWindow);
+            // Verify that the properties were updated correctly
+            Assert.AreEqual("Updated Living Room Window", retrievedWindow.WindowName);
+            Assert.AreEqual(101, retrievedWindow.LocationId);
+            Assert.IsTrue(retrievedWindow.IsOpen);
+
+            // Test updating a non-existing window
+            var nonExistingUpdate = repo.Update(999, updatedWindow);
+            Assert.IsNull(nonExistingUpdate);
         }
     }
 }
