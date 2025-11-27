@@ -72,13 +72,17 @@ namespace BreEasy.Tests
             Assert.IsNotNull(window);
             // Check that the name properties match
             Assert.AreEqual("Living Room Window", window.WindowName);
-
         }
 
         [TestMethod()]
         public void GetByLocationTest()
         {
-
+            // Retrieve a window by its LocationId
+            var window = repo.GetByLocation(102);
+            // Verify that it doesn't return null.
+            Assert.IsNotNull(window);
+            // Check that the name properties match
+            Assert.AreEqual("Bedroom Window", window.WindowName);
         }
 
         [TestMethod()]
