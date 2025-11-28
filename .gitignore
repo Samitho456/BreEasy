@@ -361,8 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-
-
 /BreEasy/.env
-/BreEasyAPI/.env
 /BreEasyAPI/.env
