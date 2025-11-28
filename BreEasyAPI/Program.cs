@@ -27,8 +27,8 @@ builder.Services.AddDbContext<WindowDbContext>(options =>
     options.UseMySql(conn, ServerVersion.AutoDetect(conn));
 });
 
-// register repo
-builder.Services.AddScoped<WindowsDbRepo>();
+// Register the WindowsDbRepo for dependency injection
+builder.Services.AddScoped<WindowsDbRepo, WindowsDbRepo>();
 
 var app = builder.Build();
 
