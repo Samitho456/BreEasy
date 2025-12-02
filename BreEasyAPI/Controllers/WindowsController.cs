@@ -49,7 +49,7 @@ namespace BreEasyAPI.Controllers
                 _repo.Add(window);
 
                 // Return 200 OK if successful
-                return Ok();
+                return Ok(new { Id = window.Id });
             }
             // If there's an error, return 404 Not Found
             catch

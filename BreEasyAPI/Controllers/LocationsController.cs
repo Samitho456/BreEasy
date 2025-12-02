@@ -5,13 +5,13 @@ namespace BreEasyAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class LocationController : ControllerBase
+    public class LocationsController : ControllerBase
     {
         // Local instance of the repository
         private readonly LocationDbRepo _repo;
 
         // Constructor that accepts a LocationsDbRepo instance
-        public LocationController(LocationDbRepo locationDbRepo)
+        public LocationsController(LocationDbRepo locationDbRepo)
         {
             _repo = locationDbRepo;
         }
@@ -52,8 +52,8 @@ namespace BreEasyAPI.Controllers
                     _repo.Add(location);
 
                     // Return 200 OK if successful
-                    return Ok();
-                }
+                    return Ok(new { Id = location.Id });
+            }
                 // If there's an error, return 404 Not Found
                 catch
                 {
@@ -120,6 +120,6 @@ namespace BreEasyAPI.Controllers
                     return NotFound();
                 }
             }
-        
     }
 }
+

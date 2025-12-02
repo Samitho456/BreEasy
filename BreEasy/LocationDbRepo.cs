@@ -10,8 +10,7 @@ namespace BreEasy
 {
     public class LocationDbRepo
     {
-        // int to increment for each new Location
-        private int _nextId = 0;
+    
 
         // DbContext for Entity Framework
         private readonly WindowDbContext _context;
@@ -30,7 +29,6 @@ namespace BreEasy
         /// <param name="obj">The <see cref="Location"/> object to add. The object's <c>Id</c> property will be set automatically.</param>
         public void Add(Location obj)
         {
-            obj.Id = _nextId++;
             _context.Locations.Add(obj);
             _context.SaveChanges();
         }
@@ -95,7 +93,6 @@ namespace BreEasy
             if (location != null)
             {
                 location.LocationName = obj.LocationName;
-                location.Id = obj.Id;
                 await _context.SaveChangesAsync();
             }
             return location;

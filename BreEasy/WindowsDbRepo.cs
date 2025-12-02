@@ -10,8 +10,7 @@ namespace BreEasy
 {
     public class WindowsDbRepo
     {
-        // int to increment for each new Window
-        private int _nextId = 0;
+    
 
         // DbContext for Entity Framework
         private readonly WindowDbContext _context;
@@ -30,7 +29,6 @@ namespace BreEasy
         /// <param name="obj">The <see cref="Window"/> object to add. The object's <c>Id</c> property will be set automatically.</param>
         public void Add(Window obj)
         {
-            obj.Id = _nextId++;
             _context.Windows.Add(obj);
             _context.SaveChanges();
         }

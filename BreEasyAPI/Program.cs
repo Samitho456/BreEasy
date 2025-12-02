@@ -29,6 +29,8 @@ builder.Services.AddDbContext<WindowDbContext>(options =>
 
 // Register the WindowsDbRepo for dependency injection
 builder.Services.AddScoped<WindowsDbRepo, WindowsDbRepo>();
+builder.Services.AddScoped<LocationDbRepo, LocationDbRepo>();
+
 
 var app = builder.Build();
 
