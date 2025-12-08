@@ -1,4 +1,5 @@
 using BreEasy;
+using BreEasy.DTO;
 using BreEasy.EFDbContext;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,8 +69,42 @@ namespace BreEasyAPI.Controllers
                 // Call the GetById method on the repository
                 Window window = await _repo.GetById(id);
 
-                // Return the window if found
-                return Ok(window);
+                if (window == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    // Return the window if found
+                    return Ok(window);
+                }
+            }
+            // If there's an error, return 404 Not Found
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("status/{id}")]
+        public async Task<IActionResult> GetByIdWindowStatus(int id)
+        {
+            // Use try-catch to handle potential errors
+            try
+            {
+                // Call the GetById method on the repository
+                Window window = await _repo.GetById(id);
+
+                if(window == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    // Return the window Id if found
+                    return Ok(window.IsOpen);
+                }
+               
             }
             // If there's an error, return 404 Not Found
             catch
@@ -88,8 +123,15 @@ namespace BreEasyAPI.Controllers
                 // Call the GetByLocation method on the repository
                 Window window = await _repo.GetByLocation(id);
 
-                // Return the window if found
-                return Ok(window);
+                if (window == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    // Return the window if found
+                    return Ok(window);
+                }
             }
             // If there's an error, return 404 Not Found
             catch
@@ -108,8 +150,15 @@ namespace BreEasyAPI.Controllers
                 // Call the Remove method on the repository
                 Window removedWindow = await _repo.Remove(id);
 
-                // Return the removed window if found
-                return Ok(removedWindow);
+                if (removedWindow == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    // Return the removed window if found
+                    return Ok(removedWindow);
+                }
             }
             // If there's an error, return 404 Not Found
             catch
@@ -120,16 +169,28 @@ namespace BreEasyAPI.Controllers
 
         // Update window by ID
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Window window)
+        public async Task<IActionResult> Update(int id, [FromBody] Window? window)
         {
+            if (window == null)
+            {
+                return BadRequest("Body is required or must contain valid window data.");
+            }
+
             // Use try-catch to handle potential errors
             try
             {
                 // Call the Update method on the repository
                 Window updatedWindow = await _repo.Update(id, window);
 
-                // Return the updated window if found
-                return Ok(updatedWindow);
+                if (updatedWindow == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    // Return the updated window if found
+                    return Ok(updatedWindow);
+                }
             }
             // If there's an error, return 404 Not Found
             catch
