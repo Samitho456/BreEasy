@@ -18,15 +18,28 @@ namespace TestLocation
             Assert.ThrowsException<ArgumentNullException>(() => location.LocationName = null);
         }
 
+        [DataRow(0)]
+        [DataRow(100)]
+        [DataRow(1)]
+        [DataRow(99)]
         [TestMethod]
-        public void TestHumidity()
+        public void TestHumidity(double humidity)
+        {
+
+            var location = new Location();
+
+            location.Humidity = humidity;
+            
+            Assert.AreEqual(humidity, location.Humidity);
+            Assert.IsTrue(location.Humidity >= 0 && location.Humidity <= 100);
+        }
+
+        [TestMethod]
+        public void TestHumidityFail()
         {
             var location = new Location();
-            location.Humidity = 55.5;
-            Assert.AreEqual(55.5, location.Humidity);
-            Assert.AreNotEqual(60.0, location.Humidity);
-            Assert.IsTrue(location.Humidity >= 0 && location.Humidity <= 100);
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => location.Humidity = -10);
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => location.Humidity = -1);
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => location.Humidity = 101);
         }
     }
 }
