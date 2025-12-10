@@ -138,6 +138,23 @@ namespace BreEasyAPI.Controllers
                 return NotFound();
             }
         }
-    }
+
+        [HttpPut("temperature/{id}")]
+        public async Task<IActionResult> UpdateTemperature(int id, double temperature)
+        {
+            // Use try-catch to handle potential errors
+            try
+            {
+                // Call the UpdateTemperature method on the repository
+                Location updatedLocation = await _repo.UpdateTemperature(id, temperature);
+                // Return the updated location if found
+                return Ok(updatedLocation);
+            }
+            // If there's an error, return 404 Not Found
+            catch
+            {
+                return NotFound();
+            }
+        }
 }
 

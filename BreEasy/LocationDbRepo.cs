@@ -115,5 +115,25 @@ namespace BreEasy
             }
             return location;
         }
+
+        /// <summary>
+        /// Updates the temperature value for the location with the specified identifier.
+        /// </summary>
+        /// <remarks>If no location with the specified <paramref name="id"/> exists, the method returns
+        /// <see langword="null"/> and no changes are made.</remarks>
+        /// <param name="id">The unique identifier of the location to update.</param>
+        /// <param name="temperature">The new temperature value to assign to the location.</param>
+        /// <returns>A <see cref="Location"/> object representing the updated location if found; otherwise, <see
+        /// langword="null"/>.</returns>
+        public async Task<Location> UpdateTemperature(int id, double temperature)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.Temperature = temperature;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
     }
 }
