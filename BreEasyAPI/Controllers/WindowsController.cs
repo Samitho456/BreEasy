@@ -33,9 +33,12 @@ namespace BreEasyAPI.Controllers
                 return Ok(windows);
             }
             // If there's an error, return 404 Not Found
-            catch
+            catch (ArgumentException ex)
             {
-                return NotFound();
+                {
+                    Console.WriteLine(ex.Message);
+                    return NotFound();
+                }
             }
         }
 

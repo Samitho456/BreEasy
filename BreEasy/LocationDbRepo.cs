@@ -93,6 +93,24 @@ namespace BreEasy
             if (location != null)
             {
                 location.LocationName = obj.LocationName;
+                location.Humidity = obj.Humidity;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        /// <summary>
+        /// Updates the humidity of the location with the specified ID.
+        /// </summary>
+        /// <param name="id">Id of the location to update</param>
+        /// <param name="humidity">new location humidity</param>
+        /// <returns></returns>
+        public async Task<Location> UpdateHumidity(int id, double humidity)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.Humidity = humidity;
                 await _context.SaveChangesAsync();
             }
             return location;

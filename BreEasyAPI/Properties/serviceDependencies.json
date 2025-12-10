@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "apis1": {
+      "type": "apis"
+    },
+    "compute.appService1": {
+      "group": "connections",
+      "type": "compute.appService"
+    }
+  }
+}
