@@ -10,8 +10,6 @@ namespace BreEasy
 {
     public class LocationDbRepo
     {
-    
-
         // DbContext for Entity Framework
         private readonly WindowDbContext _context;
 
@@ -68,13 +66,13 @@ namespace BreEasy
         /// identifier was found.</returns>
         public async Task<Location> Remove(int id)
         {
-            Location window = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
-            if (window != null)
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
             {
-                _context.Locations.Remove(window);
+                _context.Locations.Remove(location);
                 await _context.SaveChangesAsync();
             }
-            return window;
+            return location;
         }
 
         /// <summary>
