@@ -91,6 +91,66 @@ namespace BreEasy
             if (location != null)
             {
                 location.LocationName = obj.LocationName;
+                location.Humidity = obj.Humidity;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        /// <summary>
+        /// Updates the humidity of the location with the specified ID.
+        /// </summary>
+        /// <param name="id">Id of the location to update</param>
+        /// <param name="humidity">new location humidity</param>
+        /// <returns></returns>
+        public async Task<Location> UpdateHumidity(int id, double humidity)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.Humidity = humidity;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        /// <summary>
+        /// Updates the temperature value for the location with the specified identifier.
+        /// </summary>
+        /// <remarks>If no location with the specified <paramref name="id"/> exists, the method returns
+        /// <see langword="null"/> and no changes are made.</remarks>
+        /// <param name="id">The unique identifier of the location to update.</param>
+        /// <param name="temperature">The new temperature value to assign to the location.</param>
+        /// <returns>A <see cref="Location"/> object representing the updated location if found; otherwise, <see
+        /// langword="null"/>.</returns>
+        public async Task<Location> UpdateTemperature(int id, double temperature)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.Temperature = temperature;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        public async Task<Location> UpdateMaxHumidity(int id, double maxHumidity)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.MaxHumidity = maxHumidity;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        public async Task<Location> UpdateMaxTemperature(int id, double maxTemperature)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.MaxTemperature = maxTemperature;
                 await _context.SaveChangesAsync();
             }
             return location;
