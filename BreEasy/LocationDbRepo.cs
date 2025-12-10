@@ -135,5 +135,27 @@ namespace BreEasy
             }
             return location;
         }
+
+        public async Task<Location> UpdateMaxHumidity(int id, double maxHumidity)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.MaxHumidity = maxHumidity;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
+
+        public async Task<Location> UpdateMaxTemperature(int id, double maxTemperature)
+        {
+            Location location = await _context.Locations.FirstOrDefaultAsync(w => w.Id == id);
+            if (location != null)
+            {
+                location.MaxTemperature = maxTemperature;
+                await _context.SaveChangesAsync();
+            }
+            return location;
+        }
     }
 }
