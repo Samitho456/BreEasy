@@ -53,7 +53,7 @@ namespace BreEasyAPI.Controllers
 
                 // Return 200 OK if successful
                 return Ok(new { Id = location.Id });
-        }
+            }
             // If there's an error, return 404 Not Found
             catch
             {
@@ -156,5 +156,6 @@ namespace BreEasyAPI.Controllers
                 return NotFound();
             }
         }
+    }
 }
 
