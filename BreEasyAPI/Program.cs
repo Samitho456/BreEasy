@@ -44,7 +44,7 @@ builder.Services.AddScoped<WindowsDbRepo, WindowsDbRepo>();
 builder.Services.AddScoped<LocationDbRepo, LocationDbRepo>();
 
 
-
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

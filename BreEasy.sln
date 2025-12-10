@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreEasy", "BreEasy\BreEasy.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreEasyAPI", "BreEasyAPI\BreEasyAPI.csproj", "{FB939495-BECA-436F-9355-5DD9CBFCF85B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLocation", "TestLocation\TestLocation.csproj", "{42C91174-13C2-4087-A12E-B27EC0546950}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FB939495-BECA-436F-9355-5DD9CBFCF85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB939495-BECA-436F-9355-5DD9CBFCF85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB939495-BECA-436F-9355-5DD9CBFCF85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C91174-13C2-4087-A12E-B27EC0546950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C91174-13C2-4087-A12E-B27EC0546950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C91174-13C2-4087-A12E-B27EC0546950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C91174-13C2-4087-A12E-B27EC0546950}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

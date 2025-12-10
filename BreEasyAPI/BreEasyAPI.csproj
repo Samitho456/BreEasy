@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BreEasy\BreEasy.csproj" />
+    <ProjectReference Include="..\TestLocation\TestLocation.csproj" />
   </ItemGroup>
 
 </Project>
