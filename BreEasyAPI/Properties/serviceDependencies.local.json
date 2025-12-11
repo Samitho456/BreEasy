@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "apis1": {
+      "ignored": "True",
+      "type": "apis"
+    },
+    "compute.appService1": {
+      "group": "connections",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/BreEasy",
+      "type": "compute.appService.windows"
+    }
+  }
+}
